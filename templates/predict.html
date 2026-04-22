@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TruthLens - Prediction</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="hero-blur">
+<div class="overlay">
+
+<div class="predict-container">
+
+    <!-- TITLE -->
+    <h2 class="text-center mb-3 fw-bold">TruthLens 🔍</h2>
+    <p class="text-center text-muted mb-4">Detect Fake News with Explainable AI (LIME + SHAP)</p>
+
+    <!-- ERROR -->
+    {% if error %}
+        <div class="alert alert-danger text-center">{{ error }}</div>
+    {% endif %}
+
+    <!-- INPUT -->
+    <form method="POST">
+        <textarea name="news" class="form-control textarea mb-3 shadow-sm"
+        placeholder="Enter news here...">{{ user_input }}</textarea>
+
+        <!-- BUTTONS -->
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <button type="submit" class="btn btn-primary px-4">Check</button>
+
+            <a href="/live-news" class="btn btn-outline-primary px-4">
+                Live News
+            </a>
+        </div>
+    </form>
+
+    <!-- RESULT -->
+    {% if prediction %}
+
+    <div class="result-box mt-4 text-center p-3 rounded shadow-sm">
+
+        {% if "FAKE" in prediction %}
+            <h3 class="text-danger fw-bold">{{ final_prediction }}</h3>
+        {% else %}
+            <h3 class="text-success fw-bold">{{ final_prediction }}</h3>
+        {% endif %}
+
+        <p class="mt-2"><b>Confidence:</b> {{ confidence }}%</p>
+
+        {% if trust %}
+            <span class="badge bg-info mt-1">Source Trust: {{ trust }}</span>
+        {% endif %}
+    </div>
+
+    <!-- EXPLANATION -->
+    <div class="explanation-box mt-4">
+
+        <h4 class="text-center mb-3 fw-semibold">Why this prediction?</h4>
+
+        <div class="row g-3">
+
+            <!-- LIME -->
+            <div class="col-md-6">
+                <div class="card p-3 shadow-sm h-100">
+                    <h5 class="mb-3">🧠 LIME Explanation</h5>
+                    {% if explanation %}
+                        <ul class="small">
+                            {% for line in explanation %}
+                                <li>{{ line }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No LIME explanation available</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- SHAP -->
+            <div class="col-md-6">
+                <div class="card p-3 shadow-sm h-100">
+                    <h5 class="mb-3">📊 SHAP Explanation</h5>
+                    {% if shap_explanation %}
+                        <ul class="small">
+                            {% for line in shap_explanation %}
+                                <li>{{ line }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No SHAP explanation available</p>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FACT CHECK SECTION -->
+        <div class="card p-3 shadow-sm mt-4">
+            <h5 class="mb-3">🛰️ Fact Verification</h5>
+
+            {% if fact_result and fact_result.status == "success" %}
+                <p><b>Similarity Score:</b> {{ fact_result.similarity }}</p>
+                <button class="btn btn-sm btn-outline-dark mb-2" onclick="toggleFact()">
+                   Explain Fact Check
+                </button>
+
+                <div id="factBox" style="display:none;">
+                    <ul class="small">
+                        {% for news in fact_result.matched_news %}
+                            <li>{{ news }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            {% elif fact_result and fact_result.status == "no_data" %}
+                <p class="text-warning">⚠ No matching news found. This may be new or unverified.</p>
+
+            {% elif fact_result and fact_result.status == "api_failed" %} 
+                <p class="text-danger">⚠ Unable to verify due to API issue.</p>
+            {% elif fact_result and fact_result.status == "rate_limited" %}
+                <p class="text-warning">⚠ API limit reached. Please try again later.</p>
+
+            {% endif %}
+        </div>
+
+        <!-- NER SECTION -->
+        <div class="card p-3 shadow-sm mt-3">
+            <h5 class="mb-3">🧾 Key Entities Detected</h5>
+
+            {% if entities %}
+                <ul class="small">
+                    {% for ent, label in entities %}
+                        <li><b>{{ ent }}</b> ({{ label }})</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                 <p>No significant entities found</p>
+            {% endif %}
+        </div>
+
+        <!-- CONCLUSION -->
+        <div class="conclusion-box mt-4 shadow-sm">
+            <h5>Final Conclusion</h5>
+            {% if conclusion %}
+                <p class="mb-0">{{ conclusion }}</p>
+            {% endif %}
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    <!-- NAV -->
+    <div class="text-center mt-4">
+        <a href="/history" class="btn btn-outline-primary me-2 px-4">View History</a>
+        <br><br>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger px-4">Logout</a>
+    </div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+function toggleFact() {
+    let box = document.getElementById("factBox");
+    if (box.style.display === "none") {
+        box.style.display = "block";
+    } else {
+        box.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>

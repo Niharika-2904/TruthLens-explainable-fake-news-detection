@@ -1,0 +1,337 @@
+/* Full screen background */
+.hero {
+    background: url("/static/bg.jpg") no-repeat center center/cover;
+    height: 100vh;
+    position: relative;
+}
+
+/* Dark overlay */
+.overlay {
+    background: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Content styling */
+.content {
+    color: white;
+    max-width: 700px;
+}
+
+.title {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.subtitle {
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.description {
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+/* Custom buttons */
+.custom-btn {
+    padding: 10px 25px;
+    border: 2px solid white;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+/* Hover effect */
+.custom-btn:hover {
+    background: #0d6efd;   /* Bootstrap blue */
+    border-color: #0d6efd;
+    color: white;
+}
+/* Background with blur */
+.hero-blur {
+    background: url("/static/bg.jpg") no-repeat center center/cover;
+    height: 100vh;
+    position: relative;
+}
+
+/* Dark overlay + blur */
+.hero-blur .overlay {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login Card */
+.login-card {
+    background: white;
+    padding: 50px;
+    width: 450px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+/* Inputs */
+.form-control {
+    border-radius: 8px;
+}
+
+/* Back link */
+.back-link {
+    text-decoration: none;
+    color: #0d6efd;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Predict Page UI */
+/* Background blur wrapper */
+.hero-blur {
+    width: 100%;
+    height: 100vh;
+    background: url('/static/bg.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Dark overlay */
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MAIN CARD FIX (IMPORTANT) */
+.predict-container {
+    width: 90%;
+    max-width: 950px;
+    padding: 30px;
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+
+    max-height: 85vh;        /* FIX: prevents overflow */
+    overflow-y: auto;        /* scroll inside */
+}
+
+/* TEXTAREA IMPROVEMENT */
+.textarea {
+    min-height: 140px;
+    border-radius: 10px;
+}
+
+/* BUTTON ALIGNMENT */
+.d-flex {
+    flex-wrap: wrap;
+}
+
+/* RESULT BOX */
+.result-box {
+    background: #f8f9fa;
+    padding: 18px;
+    border-radius: 12px;
+}
+
+/* EXPLANATION SECTION */
+.explanation-box {
+    margin-top: 20px;
+}
+
+/* LIMIT HEIGHT OF EXPLANATION CARDS */
+.card {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+/* CONCLUSION STYLE */
+.conclusion-box {
+    background: #eef6ff;
+    padding: 15px;
+    border-left: 5px solid #0d6efd;
+    border-radius: 10px;
+}
+
+/* NAV BUTTONS LAYOUT */
+.text-center.mt-4 {
+    margin-top: 20px !important;
+}
+
+/* HISTORY BUTTON */
+.text-center.mt-4 a.btn-outline-light {
+    border-color: #ccc;
+    color: #333;
+}
+
+.text-center.mt-4 a.btn-outline-light:hover {
+    background: #2563eb;
+    color: white;
+}
+
+/* LOGOUT BUTTON */
+.text-center.mt-4 a.btn-danger {
+    padding: 8px 20px;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+    .card {
+        max-height: none;
+    }
+}
+
+/*HIStORY PAGE UI*/
+/* HISTORY PAGE UI*/
+.history-container {
+    width: 95%;
+    max-width: 1100px;
+    padding: 30px;
+
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 15px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+/* Table improvements */
+table td {
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+/* News column scroll if long */
+table td:first-child {
+    max-width: 500px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Hover effect */
+.table-hover tbody tr:hover {
+    background-color: #f1f5ff;
+}
+
+/* ADMIN PAGE UI */
+/* ADMIN CONTAINER */
+.admin-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    width: 95%;
+    max-width: 1100px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* TABLE */
+.custom-table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.custom-table th {
+    text-align: center;
+}
+
+.custom-table td {
+    vertical-align: middle;
+}
+
+/* LONG NEWS TEXT */
+.news-cell {
+    max-width: 350px;
+    word-wrap: break-word;
+    font-size: 14px;
+}
+
+/* CHART SECTION */
+.charts {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* CHART IMAGES */
+.chart-img {
+    width: 45%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+/* LIVE NEWS PAGE */
+/* LIVE NEWS CONTAINER */
+.live-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    width: 90%;
+    max-width: 900px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* SINGLE NEWS CARD */
+.news-card {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+/* NEWS TITLE */
+.news-title {
+    font-weight: 500;
+    font-size: 16px;
+    margin: 0;
+    flex: 1;
+}
+
+/* BUTTON HOVER */
+.news-card button:hover {
+    transform: scale(1.05);
+    transition: 0.2s;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TruthLens</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="hero">
+
+    <div class="overlay">
+
+        <div class="content text-center">
+            <h1 class="title">TruthLens</h1>
+
+            <h4 class="subtitle">
+                An Explainable AI Approach for Fake News Detection
+            </h4>
+
+            <p class="description">
+                TruthLens helps users detect whether a news article is real or fake using Machine Learning models.
+                It also provides explanations using LIME and SHAP to increase transparency and trust in predictions.
+            </p>
+            
+            <div class="mt-4">
+                <a href="/login" class="custom-btn me-3">Login</a>
+                <a href="/register" class="custom-btn">Register</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 All Rights Reserved | Niharika Saxena | Priyanka Yadav </p>
+</footer>
+
+</body>
+</html>
